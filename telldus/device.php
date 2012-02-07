@@ -69,4 +69,12 @@
         $tdtool = new TDTool();
         $tdtool->turnOnDevice($this);
     }
+    
+    function turnOnForAPeriodOfTime($microSeconds)
+    {
+        $tdtool = new TDTool();
+        $tdtool->turnOnDevice($this);
+        usleep($microSeconds);
+        $tdtool->turnOffDevice($this);
+    }
  }
