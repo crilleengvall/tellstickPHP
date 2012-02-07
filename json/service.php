@@ -18,8 +18,10 @@
     protected function _getJson($url)
     {
         $ch = $this->_initCurl($url);
-        $this->_executeRequest($ch);
+        $json = $this->_executeRequest($ch);
         $this->_closeRequest($ch);
+        
+        return($json);
     }
     
     private function _initCurl($url)
@@ -36,11 +38,13 @@
         $data = curl_exec($ch);
         $info = curl_getinfo($ch);
         
+        
+    
         $body = substr($data, $info['header_size']);
         
         $json = json_decode($body);
         
-        print_r($json);
+        return($json);
     }
     
     private function _closeRequest($ch)

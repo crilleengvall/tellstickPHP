@@ -23,9 +23,19 @@
     function search($query)
     {
         $searchUrl = $this->_url . $query;
-        $this->_getJson($searchUrl);
+        $json = $this->_getJson($searchUrl);
+        
+        return($json);
     }
     
+    function searchWithRefreshUrl($query)
+    {
+        $searchUrl = "http://search.twitter.com/search.json" . $query;
+
+        $json = $this->_getJson($searchUrl);
+        
+        return($json);
+    }
  }
  
  ?>

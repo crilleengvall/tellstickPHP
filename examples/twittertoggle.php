@@ -10,9 +10,26 @@
  */
  
 require_once("../twitter/twitter.php");
+require_once("../telldus/device.php");
 
-$twitter = new Twitter();
+$twitterUsername = "crilleengvall";
+$twitter = new Twitter($twitterUsername);
+$tweets = array();
 
-$twitter->getMentionsByUsername("crilleengvall");
+if($twitter->refreshUrlExists())
+{
+    $twitter->searchWithRefreshUrl($refreshUrl);
+}
+else
+{ 
+    $twitter->getMentionsByUsername($twitterUsername);
+}
+
+if(count($twitter->getTweets()) > 0)
+{
+    $tdtool = new TDTool();
+    $device = $tdtool->getDeviceById(1);
+    $device->turnOnForAPeriodOfTime(5000000);
+}
 
 ?>
