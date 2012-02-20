@@ -9,7 +9,7 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  */
 
-include("../telldus/device.php");
+require_once("../telldus/device.php");
 
 $tdtool = new TDTool();
 $device = $tdtool->getDeviceById(1);
